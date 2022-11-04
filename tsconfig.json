@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "types": ["vite/client"],
+        "emitDeclarationOnly": true,
+        "declarationDir": "./dist",
+        "declaration": true,
+        "isolatedModules": false,
+        "resolveJsonModule": true
+    },
+    "include": ["src/**/*", "test/**/*.ts"]
+}

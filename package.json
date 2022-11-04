@@ -1,0 +1,23 @@
+{
+    "name": "promptor",
+    "version": "2.4.0",
+    "main": "./dist/index.js",
+    "description": "",
+    "scripts": {
+        "dev": "vite dev",
+        "build": "vite build  ",
+        "analyze": "vite build --mode analyze",
+        "test": "vitest"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@types/lodash-es": "^4.17.6",
+        "browserslist": "^4.21.4",
+        "rollup-plugin-visualizer": "^5.8.3",
+        "vite": "^3.1.8",
+        "vitest": "^0.24.5"
+    },
+    "dependencies": {
+        "lodash-es": "^4.17.21"
+    }
+}
