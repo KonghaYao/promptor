@@ -1,16 +1,8 @@
 import { describe, it, expect } from "vitest";
 import { promptToTagData } from "../src/promptToTagData";
 
-// describe('测试', () => {
-//     it('正常括号测试', () => {
-//         const info = stringToTagData(
-//             'dream,(((extremely detailed, CG unity, 8k wallpaper))),{painting},((detailed flooding bare feet:1.5)),info'
-//         );
-//         console.log(info);
-//     });
-// });
-
-describe("测试", () => {
+/** 非最终结果测试，这是中间函数的测试 */
+describe("Prompt 解析第一步测试", () => {
     it("正常括号测试", () => {
         const info = promptToTagData(
             "dream,(((extremely detailed, CG unity, {8k wallpaper}))),{painting},(detailed flooding bare feet:1.5)"

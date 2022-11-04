@@ -1,8 +1,10 @@
 import { convertToString } from "./convertToString";
 import { IPromptData } from "./IPromptData";
 
-/** 将用户的 Tag 转化为字符串 */
-
+/**
+ * 将输入的 IPromptData 转化为字符串
+ * @param positive 这里可以输入强调标签 {} 或者 ()
+ */
 export const TagsToPrompt = (data: IPromptData[], positive = "()") => {
     return data
         .map((i) => {
