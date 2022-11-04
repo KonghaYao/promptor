@@ -1,15 +1,15 @@
 /// <reference types="vitest" />
 import { defineConfig } from "vite";
 import p from "./package.json";
-import visualizer from "rollup-plugin-visualizer";
 export default defineConfig(({ mode }) => {
     return {
         plugins: [
-            mode === "analyze" &&
-                (visualizer({
-                    open: true,
-                    filename: "visualizer/stat.html",
-                }) as any),
+            {
+                enforce: "pre",
+                transform(code, id) {
+                    return code.replace(/\/\* @ignore \*\/([^\n]*)/, "");
+                },
+            },
         ],
         define: {
             __version__: JSON.stringify(p.version),
@@ -17,7 +17,8 @@ export default defineConfig(({ mode }) => {
         build: {
             lib: {
                 entry: "./src/index.ts",
-                name: "index",
+                name: "Promptor",
+                fileName: "index",
             },
         },
     };

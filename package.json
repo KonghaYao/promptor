@@ -2,24 +2,21 @@
     "name": "promptor",
     "version": "1.0.0",
     "main": "./dist/promptor.mjs",
-    "description": "",
+    "description": "It' s a Typescript NAI and Stable Diffusion Prompts decoder and encoder!",
     "scripts": {
         "dev": "vite dev",
-        "build": "vite build  ",
-        "analyze": "vite build --mode analyze",
+        "build": "vite build & tsc -p tsconfig.node.json",
         "test": "vitest",
-        "coverage": "vitest run --coverage "
+        "coverage": "vitest run --coverage ",
+        "prepublish": "pnpm build"
     },
     "license": "MIT",
     "devDependencies": {
-        "@types/lodash-es": "^4.17.6",
         "@vitest/coverage-c8": "^0.24.5",
         "browserslist": "^4.21.4",
-        "rollup-plugin-visualizer": "^5.8.3",
+        "codecov": "^3.8.3",
         "vite": "^3.1.8",
         "vitest": "^0.24.5"
     },
-    "dependencies": {
-        "lodash-es": "^4.17.21"
-    }
+    "dependencies": {}
 }
