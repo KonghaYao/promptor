@@ -1,7 +1,7 @@
 {
     "name": "promptor",
     "version": "1.0.0",
-    "main": "./dist/promptor.mjs",
+    "main": "./dist/index.mjs",
     "description": "It' s a Typescript NAI and Stable Diffusion Prompts decoder and encoder!",
     "scripts": {
         "dev": "vite dev",
