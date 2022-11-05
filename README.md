@@ -10,6 +10,11 @@
 2. 测试覆盖率 99%，可用性高。
 3. 魔导绪论项目的一键导入和一键导出功能都是基于这个库进行操作的
 
+```sh
+npm install promptor
+pnpm i promptor
+```
+
 ## 功能
 
 具体功能 Typescript 有提示，这里只是把导出的名称列举一下。同时，所有的测试例子其实都是 DEMO，非常简单，详见 [代码](./test/TagsConvertor.spec.ts)。
