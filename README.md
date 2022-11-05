@@ -2,9 +2,13 @@
 
 ![](https://img.shields.io/npm/l/promptor)
 ![](https://img.shields.io/npm/v/promptor)
+![](https://img.shields.io/github/languages/top/KonghaYao/promptor)
+[![codecov](https://codecov.io/github/KonghaYao/promptor/branch/master/graph/badge.svg?token=5Y8UYN60WP)](https://codecov.io/github/KonghaYao/promptor)
+[![workflow for Codecov](https://github.com/KonghaYao/promptor/actions/workflows/main.yml/badge.svg)](https://github.com/KonghaYao/promptor/actions/workflows/main.yml)
 
 1. 本项目从 [魔导绪论项目](https://github.com/KonghaYao/ai-tag) 分离出来，是用于 Prompt 字符串解析的一个库。
-2. 魔导绪论项目的一键导入和一键导出功能都是基于这个库进行操作的
+2. 测试覆盖率 99%，可用性高。
+3. 魔导绪论项目的一键导入和一键导出功能都是基于这个库进行操作的
 
 ## 功能
 
