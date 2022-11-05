@@ -1,5 +1,8 @@
 # AI 绘图 Prompt 解析库
 
+![](https://img.shields.io/npm/l/promptor)
+![](https://img.shields.io/npm/v/promptor)
+
 1. 本项目从 [魔导绪论项目](https://github.com/KonghaYao/ai-tag) 分离出来，是用于 Prompt 字符串解析的一个库。
 2. 魔导绪论项目的一键导入和一键导出功能都是基于这个库进行操作的
 
