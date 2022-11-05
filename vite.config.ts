@@ -14,7 +14,9 @@ export default defineConfig(({ mode }) => {
         define: {
             __version__: JSON.stringify(p.version),
         },
+
         build: {
+            minify: true,
             lib: {
                 entry: "./src/index.ts",
                 name: "Promptor",

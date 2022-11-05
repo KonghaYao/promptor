@@ -33,17 +33,13 @@ export const promptToTagData = (s: string, baseEm = 0): IPromptData[] => {
                 item === "[" ? emphasizeCount-- : emphasizeCount++;
             } else if (rgl.includes(s[i])) {
                 item === "]" ? emphasizeCount++ : emphasizeCount--;
-                if (emphasizeCount === 0) {
-                    piece.push(s.slice(lastStopCursor, i + 1));
-                    lastStopCursor = i + 1;
-                }
             }
         }
     }
     /** 处理最后一个位置没有被识别的问题 */
     if (emphasizeCount === 0 && lastStopCursor !== s.length)
         piece.push(s.slice(lastStopCursor));
-
+    // console.log(piece);
     return (
         piece
             /** 排除分隔符的影响 */

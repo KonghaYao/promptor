@@ -38,7 +38,7 @@ describe("Prompt 解析第一步测试", () => {
     });
     it("重叠括号获取", () => {
         const info = promptToTagData(
-            "(music {alpha}),{{music {beta}}},[music {fin}],{{{music} beta}},[[{music} beta]],ganyu (Ganshin Impact),"
+            "(music {alpha}),{{music {beta}}},[music {fin}],{{{music} beta}},[[{music} beta]],ganyu (Ganshin Impact),white {starry} stocking "
         );
         // console.log(info);
         expect(info).eql([
@@ -65,6 +65,10 @@ describe("Prompt 解析第一步测试", () => {
             {
                 emphasize: 0,
                 text: "ganyu (Ganshin Impact)",
+            },
+            {
+                emphasize: 0,
+                text: "white {starry} stocking",
             },
         ]);
     });
