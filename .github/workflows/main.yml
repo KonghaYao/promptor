@@ -11,7 +11,9 @@ jobs:
               with:
                   node-version: 16
             - name: Install Packages
-              run: npm install
+              run: |
+                  npm install pnpm -g
+                  npm install
             - name: Generate coverage report
               run: npm run coverage
             - name: Upload coverage to Codecov
