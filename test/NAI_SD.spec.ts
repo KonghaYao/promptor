@@ -27,12 +27,12 @@ describe("NAI 与 SD 等价交换测试", () => {
         ]);
         // console.log(info);
     });
-    it("SD -> NAI 括号权重测试", () => {
-        const info = toNAI(
-            PromptToTags("(one),((two)),[-one],[[-two]],(one_sp:1.050)"),
-            {}
-        );
-        console.log(info);
-        // console.log(info);
-    });
+    // it("SD -> NAI 括号权重测试", () => {
+    //     const info = toNAI(
+    //         PromptToTags("(one),((two)),[-one],[[-two]],(one_sp:1.050)"),
+    //         {}
+    //     );
+    //     // console.log(info);
+    //     // console.log(info);
+    // });
 });

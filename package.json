@@ -19,10 +19,10 @@
     "license": "MIT",
     "devDependencies": {
         "@vitest/coverage-c8": "^0.24.5",
+        "@vitest/ui": "^0.25.8",
         "browserslist": "^4.21.4",
         "codecov": "^3.8.3",
         "vite": "^3.1.8",
         "vitest": "^0.24.5"
-    },
-    "dependencies": {}
+    }
 }

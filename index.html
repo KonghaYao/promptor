@@ -7,4 +7,11 @@
         <title>Document</title>
     </head>
     <body></body>
+    <script type="module">
+        import { promptToTagData } from "./src/promptToTagData";
+        const info = promptToTagData(
+            "((((extremely detailed, CG unity, {8k wallpaper})),{{{{painting}}}}"
+        );
+        console.log(info);
+    </script>
 </html>
