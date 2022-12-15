@@ -9,8 +9,6 @@ export const promptToTagData = (s: string) => {
 };
 
 const mainLoop = (s: string, baseEm = 0): IPromptData[] => {
-    // s = `,${s}`;
-
     /** 声明左括号的数组 */
     let lel = "({[（";
 
@@ -27,7 +25,6 @@ const mainLoop = (s: string, baseEm = 0): IPromptData[] => {
 
     /** 收集每一个括号分割部分 */
     let piece: string[] = [];
-
     for (let i = 0; i < s.length; i++) {
         const item = s[i];
         if (
@@ -42,8 +39,8 @@ const mainLoop = (s: string, baseEm = 0): IPromptData[] => {
             item === "]" ? emphasizeCount++ : emphasizeCount--;
         }
     }
-    console.log(piece);
-    debugger;
+    // console.log(piece);
+    // debugger;
     return (
         piece
             /** 排除分隔符的影响 */
@@ -94,7 +91,7 @@ const mainLoop = (s: string, baseEm = 0): IPromptData[] => {
                     [...splitSymbol].some((i) => text.includes(i))
                 ) {
                     // 递归，如果有分割符号，那么可以再分
-                    return mainLoop(text, emphasize);
+                    return mainLoop(text, emphasize + baseEm);
                 }
                 return [{ text, emphasize: emphasize + baseEm }];
             })
