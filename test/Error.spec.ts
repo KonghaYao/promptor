@@ -5,9 +5,36 @@ import { promptToTagData } from "../src/promptToTagData";
 describe("错误解析测试", () => {
     it("左括号错误测试", () => {
         const info = promptToTagData(
-            "(((extremely detailed, CG unity, {8k wallpaper})),{painting}"
+            "(((extremely detailed, CG unity, {8k wallpaper}})),{painting}"
         );
         expect(info).eql([
+            {
+                emphasize: 3,
+                text: "extremely detailed",
+            },
+            {
+                emphasize: 3,
+                text: "CG unity",
+            },
+            {
+                emphasize: 4,
+                text: "8k wallpaper",
+            },
+            {
+                emphasize: 1,
+                text: "painting",
+            },
+        ]);
+    });
+    it("左括号错误测试2", () => {
+        const info = promptToTagData(
+            "(((((extremely detailed, CG unity, {8k wallpaper})),{painting}"
+        );
+        expect(info).eql([
+            {
+                emphasize: 0,
+                text: "(((",
+            },
             {
                 emphasize: 2,
                 text: "extremely detailed",
@@ -26,9 +53,9 @@ describe("错误解析测试", () => {
             },
         ]);
     });
-    it("左括号错误测试2", () => {
+    it("右括号错误测试", () => {
         const info = promptToTagData(
-            "(((((extremely detailed, CG unity, {8k wallpaper})),{painting}"
+            "((extremely detailed, CG unity, {8k wallpaper}}))),{painting}"
         );
         expect(info).eql([
             {
@@ -42,6 +69,38 @@ describe("错误解析测试", () => {
             {
                 emphasize: 3,
                 text: "8k wallpaper",
+            },
+            // 错误产物
+            {
+                emphasize: 0,
+                text: "))",
+            },
+            {
+                emphasize: 1,
+                text: "painting",
+            },
+        ]);
+    });
+    it("左括号错误测试2", () => {
+        const info = promptToTagData(
+            "(((extremely detailed, CG unity, {8k wallpaper})))),{painting}"
+        );
+        expect(info).eql([
+            {
+                emphasize: 3,
+                text: "extremely detailed",
+            },
+            {
+                emphasize: 3,
+                text: "CG unity",
+            },
+            {
+                emphasize: 4,
+                text: "8k wallpaper",
+            },
+            {
+                emphasize: 0,
+                text: ")",
             },
             {
                 emphasize: 1,

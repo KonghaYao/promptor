@@ -8,16 +8,15 @@ export const promptToTagData = (s: string) => {
     return mainLoop(`,${s},`, 0);
 };
 
-const mainLoop = (s: string, baseEm = 0): IPromptData[] => {
-    /** 声明左括号的数组 */
-    let lel = "({[（";
+/** 声明左括号的数组 */
+let lel = "({[（";
 
-    /** 声明右括号的数组 */
-    let rgl = ")}]）";
+/** 声明右括号的数组 */
+let rgl = ")}]）";
 
-    /** 声明分割符号的数组 */
-    let splitSymbol = ",，";
-
+/** 声明分割符号的数组 */
+let splitSymbol = ",，";
+const getPiece = (s: string, forceRight = false) => {
     /** 记录上一个切割的位置 */
     let lastStopCursor = 0;
     /**  记录平台基础值，左加右减，归零时进行字符串收割 */
@@ -27,26 +26,47 @@ const mainLoop = (s: string, baseEm = 0): IPromptData[] => {
     let piece: string[] = [];
     for (let i = 0; i < s.length; i++) {
         const item = s[i];
-        if (
-            i === s.length - 1 ||
-            (splitSymbol.includes(item) && emphasizeCount === 0)
-        ) {
-            piece.push(s.slice(lastStopCursor, i + 1));
-            lastStopCursor = i + 1;
-        } else if (lel.includes(item)) {
+        if (lel.includes(item)) {
             item === "[" ? emphasizeCount-- : emphasizeCount++;
         } else if (rgl.includes(item)) {
             item === "]" ? emphasizeCount++ : emphasizeCount--;
         }
+        if (
+            i === s.length - 1 ||
+            (emphasizeCount === 0 &&
+                (splitSymbol.includes(item) ||
+                    // 第二轮纠正的时候，进行一个 错误排除
+                    (forceRight && [...rgl, ...lel].includes(item))))
+        ) {
+            piece.push(s.slice(lastStopCursor, i + 1));
+            lastStopCursor = i + 1;
+        }
     }
-    // console.log(piece);
+    if (
+        emphasizeCount !== 0 &&
+        [...splitSymbol].some((i) => piece.at(-1).includes(i))
+    ) {
+        // console.log(s, emphasizeCount, piece);
+        // debugger;
+        // 强调层次错误了，必定是最后一个部分的问题
+        const it = getPiece(piece.at(-1).split("").reverse().join(""), true)
+            .map((i) => i.split("").reverse().join(""))
+            .reverse();
+        // console.warn(it, s);
+        piece.pop();
+        piece.push(...it);
+    }
+    return piece;
+};
+const mainLoop = (s: string, baseEm = 0): IPromptData[] => {
+    const piece = getPiece(s);
     // debugger;
     return (
         piece
             /** 排除分隔符的影响 */
             .filter((i) => !splitSymbol.includes(i))
-            /** Only Gold Knows */
             .flatMap((i) => {
+                /** 删除左右两侧的括号，并递归解析 */
                 if (i.length === 0) return [];
                 let a = 0;
                 let b = i.length - 1;
